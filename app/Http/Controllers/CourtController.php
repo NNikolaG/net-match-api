@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CourtRequest;
 use App\Http\Resources\CourtResource;
 use App\Models\Court;
+use Illuminate\Support\Facades\Log;
 
 class CourtController extends Controller
 {
