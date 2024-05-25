@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\CourtController;
 use Illuminate\Support\Facades\Route;
 
 // Auth routes
@@ -15,6 +16,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('clubs', ClubController::class);
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
+    Route::resource('courts', CourtController::class);
 });
 
 

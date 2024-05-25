@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = User::query();
+        $data = User::with('roles');
         return UserResource::collection(paginate_query($data));
     }
 
@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return new UserResource($user);
+        return new UserResource($user->load('roles'));
     }
 
     /**
@@ -48,14 +48,14 @@ class UserController extends Controller
     public function updateRoles(Request $request, User $user)
     {
         // validate the request first
-        $this->validate($request, [
+        $validated = $request->validate([
             'roles' => 'required|array',
             'roles.*' => 'exists:roles,id',
         ]);
 
         // then use sync() method to update the roles
-        $user->roles()->sync($request->roles);
+        $user->roles()->sync($validated['roles']);
 
-        return response()->json(['message' => 'User roles updated']);
+        return response()->json(['message' => 'User roles updated', 'status' => 200], 200);
     }
 }

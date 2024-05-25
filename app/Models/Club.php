@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Club extends Model
 {
@@ -23,4 +24,9 @@ class Club extends Model
         'contact_phone',
         'contact_email',
     ];
+
+    public function courts(): HasMany
+    {
+        return $this->hasMany(Court::class);
+    }
 }

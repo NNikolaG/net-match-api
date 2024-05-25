@@ -36,7 +36,7 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(RoleRequest $request, Club $role)
+    public function update(RoleRequest $request, Role $role)
     {
         $role->update($request->validated());
 
