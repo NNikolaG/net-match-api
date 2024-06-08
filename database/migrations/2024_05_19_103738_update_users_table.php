@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->string('profile_picture')->nullable();
             $table->date('date_of_birth');
             $table->string('gender');
+            $table->integer('age');
             $table->unsignedInteger('club_id')->nullable();
 
             $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');

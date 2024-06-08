@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Settings;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CourtRequest;
 use App\Http\Resources\CourtResource;
 use App\Models\Court;
-use Illuminate\Support\Facades\Log;
 
 class CourtController extends Controller
 {
