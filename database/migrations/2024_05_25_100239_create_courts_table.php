@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('courts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('club_id')->constrained()->onDelete('cascade'); // connects to clubs
             $table->string('name');
             $table->enum('surface', ['Clay', 'Grass', 'Hard', 'Artificial Grass']);
             $table->boolean('indoor')->default(false); // Indoor court or Outdoor court
@@ -21,9 +22,8 @@ return new class extends Migration {
             $table->integer('capacity')->nullable(); // Seating capacity
             $table->string('location')->nullable(); // Location description such as quadrant of the facility it's located in
             $table->boolean('balls_provided')->default(false);
+            $table->softDeletes();
             $table->timestamps();
-
-            $table->foreignId('club_id')->constrained()->onDelete('cascade'); // connects to clubs
         });
     }
 
