@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ClubRequest;
-use App\Http\Resources\ClubResource;
+use App\Http\Requests\Settings\ClubRequest;
+use App\Http\Resources\Settings\ClubResource;
 use App\Models\Club;
 
 class ClubController extends Controller

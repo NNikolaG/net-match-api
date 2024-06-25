@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
-use App\Http\Resources\UserResource;
+use App\Http\Requests\Settings\UserRequest;
+use App\Http\Resources\Settings\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CourtRequest;
-use App\Http\Resources\CourtResource;
+use App\Http\Requests\Settings\CourtRequest;
+use App\Http\Resources\Settings\CourtResource;
 use App\Models\Court;
 
 class CourtController extends Controller

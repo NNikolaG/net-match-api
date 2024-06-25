@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Settings;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;

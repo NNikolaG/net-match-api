@@ -12,12 +12,16 @@ return new class extends Migration {
     {
         Schema::create('matches', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('challenger_id')->constrained('users');
-            $table->foreignId('opponent_id')->constrained('users');
-            $table->foreignId('court_id')->constrained('courts');
-            $table->string('result');
-            $table->timestamp('scheduled_at');
-            $table->timestamp('played_at');
+            $table->foreignId('court_id')->default(null)->constrained('courts');
+            $table->foreignId('match_request_id')->constrained('match_requests');
+            $table->enum('type', ['training', 'exhibition', 'tournament', 'ranked'])->default('exhibition');
+            $table->enum('status', ['negotiation', 'scheduled', 'played', 'canceled', 'postponed'])->default('negotiation');
+            $table->boolean('challenger_conditions_agreed')->default(false);
+            $table->boolean('opponent_conditions_agreed')->default(false);
+            $table->foreignId('winner_id')->default(null)->constrained('users');
+            $table->foreignId('tournament_id')->default(null)->constrained('tournaments');
+            $table->time('duration')->default(null);
+            $table->timestamp('scheduled_at')->default(null);
             $table->softDeletes();
             $table->timestamps();
         });
