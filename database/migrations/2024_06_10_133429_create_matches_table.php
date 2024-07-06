@@ -22,6 +22,7 @@ return new class extends Migration {
             $table->foreignId('tournament_id')->default(null)->constrained('tournaments');
             $table->time('duration')->default(null);
             $table->timestamp('scheduled_at')->default(null);
+            $table->timestamp('played_at')->default(null);
             $table->softDeletes();
             $table->timestamps();
         });
