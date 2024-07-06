@@ -56,21 +56,6 @@ class MatchController extends Controller
         return response()->json();
     }
 
-    public function matchRequest(RequestForMatchRequest $requestForMatchRequest): JsonResponse
-    {
-        $requestForMatchRequest->validated();
-        $request = RequestForMatch::create($requestForMatchRequest->validated());
-
-//        SEND NOTIFICATION TO CHALLENGED USER
-//        $challenged = $request->challenged_id;
-
-        if (!$request) {
-            return response()->json(['error' => 'Failed to create new request for match'], ResponseAlias::HTTP_INTERNAL_SERVER_ERROR);
-        } else {
-            return response()->json($request, ResponseAlias::HTTP_CREATED);
-        }
-    }
-
     public function acceptMatch($requestID): JsonResponse
     {
         RequestForMatch::findOrFail($requestID)->update([

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MatchController;
 use App\Http\Controllers\MatchmakingController;
+use App\Http\Controllers\MatchRequestController;
 use App\Http\Controllers\Settings\ClubController;
 use App\Http\Controllers\Settings\CourtController;
 use App\Http\Controllers\Settings\RoleController;
@@ -29,11 +30,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('matchmaking')->group(function () {
 
         Route::resource('matches', ClubController::class);
+        Route::resource('match-requests', MatchRequestController::class);
 
         Route::get('/matchmaking/search', [MatchmakingController::class, 'search']);
 
-//        Request for match
-        Route::get('/matchmaking/match-request', [MatchController::class, 'matchRequest']);
+//      Accept/Decline request
         Route::put('/matchmaking/match-request-accept/{matchRequestId}', [MatchController::class, 'acceptMatch']);
         Route::put('/matchmaking/match-request-decline/{matchRequestId}', [MatchController::class, 'declineMatch']);
     });
