@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-// Resources
-Route::middleware('auth:sanctum')->group(function () {
+//Route::middleware('auth:sanctum')->group(function () {
 
     Route::prefix('settings')->group(function () {
 
@@ -29,7 +28,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::prefix('matchmaking')->group(function () {
 
-        Route::resource('matches', ClubController::class);
+        Route::resource('matches', MatchController::class);
         Route::resource('match-requests', MatchRequestController::class);
 
         Route::get('/matchmaking/search', [MatchmakingController::class, 'search']);
@@ -39,6 +38,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::put('/matchmaking/match-request-decline/{matchRequestId}', [MatchController::class, 'declineMatch']);
     });
 
-});
+//});
 
 
