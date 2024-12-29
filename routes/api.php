@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-//Route::middleware('auth:sanctum')->group(function () {
+// Route::middleware('auth:sanctum')->group(function () {
 
     Route::prefix('settings')->group(function () {
 
@@ -33,11 +33,8 @@ Route::post('/login', [AuthController::class, 'login']);
 
         Route::get('/matchmaking/search', [MatchmakingController::class, 'search']);
 
-//      Accept/Decline request
+        //      Accept/Decline request
         Route::put('/matchmaking/match-request-accept/{matchRequestId}', [MatchController::class, 'acceptMatch']);
         Route::put('/matchmaking/match-request-decline/{matchRequestId}', [MatchController::class, 'declineMatch']);
     });
-
-//});
-
-
+// });

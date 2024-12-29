@@ -11,6 +11,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->unsignedInteger('club_id')->nullable();
+
             $table->foreign('club_id')->references('id')->on('clubs')->onDelete('cascade');
             $table->string('last_name');
             $table->string('phone_number')->nullable();
@@ -23,7 +25,6 @@ return new class extends Migration {
             $table->date('date_of_birth');
             $table->string('gender');
             $table->integer('age');
-            $table->unsignedInteger('club_id')->nullable();
             $table->softDeletes();
 
         });
